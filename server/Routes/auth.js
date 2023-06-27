@@ -1,10 +1,13 @@
 import express from "express";
 const router = express.Router();
 
-import { login } from "../Controllers/auth.js";
+import { login, verify } from "../Controllers/auth.js";
 
 //Login
 router.get("/login", login);
+
+//verffy
+router.post("/verify", verify);
 
 //Register
 router.get("/register", (req, res) => {

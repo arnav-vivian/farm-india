@@ -1,33 +1,3 @@
-// import express from 'express';
-// import User from '../Model/User.js';
-// import dotenv from 'dotenv';
-// import twilio from 'twilio';
-
-// dotenv.config();
-
-// const client = twilio(process.env.accountSid, process.env.authToken);
-
-// function recieveOtp() {
-//     client.messages
-//         .create({
-//             body: 'Hello from twilio-node',
-//             to: '+917488723379', // Text your number
-//             from: '+13613155856', // From a valid Twilio number
-//         })
-//         .then((message) => console.log(message.sid));
-// }
-
-// const login = async (req, res) => {
-
-//     try {
-//         recieveOtp();
-//     }
-//     catch (err) {
-//         console.log(err);
-//     }
-// };
-
-// export default login;
 import express from 'express';
 import User from '../Model/User.js';
 import dotenv from 'dotenv';
@@ -37,14 +7,27 @@ dotenv.config();
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const twilioNumber = +13613155856;
+const twilioNumber = '+13613155856';
 
 const client = twilio(accountSid, authToken);
+let globalOtp = null; // Variable to store the generated OTP
+let otpTimestamp = null; // Variable to store the OTP generation timestamp
+
+function generateOTP() {
+    const otpLength = 4;
+    const min = Math.pow(10, otpLength - 1);
+    const max = Math.pow(10, otpLength) - 1;
+    const otp = Math.floor(Math.random() * (max - min + 1) + min);
+    const otpString = otp.toString();
+    return otpString;
+}
 
 function sendOTP(recipient) {
-    const otp = 1234; // Replace this with your OTP generation logic
+    const newOtp = generateOTP();
+    globalOtp = newOtp; // Store the generated OTP
+    otpTimestamp = Date.now(); // Record the OTP generation timestamp
 
-    const message = `Your OTP is: ${otp}`;
+    const message = `Your OTP is: ${newOtp}`;
 
     client.messages
         .create({
@@ -52,19 +35,41 @@ function sendOTP(recipient) {
             to: recipient,
             from: twilioNumber,
         })
-        .then((message) => console.log(`OTP sent. Message SID: ${message.sid}`))
+        .then((message) =>
+            console.log(`OTP sent. Message SID: ${message.sid}`)
+        )
         .catch((error) => console.error(`Error sending OTP: ${error.message}`));
 }
-const recipientNumber = '+917488723379'; // Replace with the recipient's phone number
-export const login = (req, res) => {
 
+export const login = (req, res) => {
     try {
+        const recipientNumber = req.body.phone;
         sendOTP(recipientNumber);
-        res.status(200).json("otp");
-    }
-    catch (err) {
+        res.status(200).json('OTP Sent Successfully');
+    } catch (err) {
         console.log(err);
+        res.status(500).json('Something went wrong');
     }
 };
 
+export const verify = (req, res) => {
+    try {
+        const otp = req.body.otp;
+        // Check if OTP has expired (5 minutes)
+        const currentTime = Date.now();
+        const otpExpiration = 5 * 60 * 1000; // 5 minutes in milliseconds
+        const isExpired = otpTimestamp + otpExpiration < currentTime;
 
+        if (otp == globalOtp && !isExpired) {
+            // Compare the entered OTP with the global OTP and check for expiration
+            res.status(200).json('OTP verified');
+
+        } else {
+            res.status(202).json('OTP not verified');
+            console.log("kya dikkat h bhai");
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json('Something went wrong');
+    }
+};
