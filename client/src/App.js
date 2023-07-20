@@ -7,6 +7,7 @@ import './App.css';
 import Home from './pages/Home';
 
 import ProfilePage from './pages/Profile';
+//  hello this is testing
 function App() {
   return (
     <Router>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<ProfilePage />} />
         {/* <Route path="/contact" element={<Contact />} /> */}
+
       </Routes>
     </Router>
   );
