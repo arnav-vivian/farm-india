@@ -1,0 +1,70 @@
+.table-container {
+    overflow-x: auto;
+  }
+  
+  .responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  .responsive-table th,
+  .responsive-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .responsive-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .responsive-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .responsive-table tbody tr:hover {
+    background-color: #e5e5e5;
+  }
+  
+  .input-container {
+    margin-bottom: 12px;
+  }
+  
+  .input-container input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+  }
+  
+  .input-container button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .input-container button:hover {
+    background-color: #AAC8A7;
+  }
+  
+  .responsive-table .action-buttons button {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: none;
+    background-color: #AAC8A7;
+    color: white;
+    cursor: pointer;
+    margin-right: 4px;
+  }
+  
+  .responsive-table .action-buttons button:hover {
+    background-color: #45a049;
+  }
+  
+  .responsive-table .action-buttons button:last-child {
+    margin-right: 0;
+  }
+  
