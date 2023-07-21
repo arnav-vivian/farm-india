@@ -13,12 +13,16 @@ const Preheader = () => {
                         className="logo"
                         alt=""
                     />
-                    <p className="font-semibold text-white text-md pt-5 px-6 sm:text-sm ml-1">
+                    <p className="sm:hidden md:inline-flex">
                         Ministry of agriculture and farmer's welfare
                     </p>
+
                 </div>
-                <div className="">
+                <div className="rounded-2xl ">
                     <div className="" id="google_element"></div>
+                </div>
+                <div>
+                    <img className="max-h-24" src='https://kisansuvidha.gov.in/assets/images/kisan-logo.png' />
                 </div>
             </div>
         </div>

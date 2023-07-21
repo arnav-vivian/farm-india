@@ -2,9 +2,9 @@ import React from 'react'
 import FarmerPage from '../components/Farmerpage';
 import ChangeScene from '../components/ChangeScene';
 import PreHeader from '../components/preheader';
-import FarmerHome from '../components/FarmerHome';
-import Header from '../components/Header';
+// import FarmerHome from '../components/FarmerHome';
 import GridGallery from '../components/GridGallery';
+import { NavbarSimple } from '../components/Header';
 //import Circle from '../components/Circle';
 //import GoogleTranslate from '../language/GoogleTranslate';
 function Home() {
@@ -12,9 +12,9 @@ function Home() {
     <div>
       <div className="containers">
         <PreHeader />
-        <Header />
+        <NavbarSimple />
         <FarmerPage />
-        <GridGallery/>
+        <GridGallery />
         <ChangeScene />
       </div>
     </div>
