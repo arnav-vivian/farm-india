@@ -4,6 +4,8 @@ import ChangeScene from '../components/ChangeScene';
 import PreHeader from '../components/preheader';
 import FarmerHome from '../components/FarmerHome';
 import Header from '../components/Header';
+import GridGallery from '../components/GridGallery';
+//import Circle from '../components/Circle';
 //import GoogleTranslate from '../language/GoogleTranslate';
 function Home() {
   return (
@@ -12,6 +14,7 @@ function Home() {
         <PreHeader />
         <Header />
         <FarmerPage />
+        <GridGallery/>
         <ChangeScene />
       </div>
     </div>

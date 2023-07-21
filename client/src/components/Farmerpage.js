@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import SmallChange from "./SmallChange";
 //import GoogleTranslate from '../language/GoogleTranslate';
 // import { Button } from '@material-tailwind/react';
-
+//import SmallChangeScene from "./SmallChangescene";
+//import Example from "./Header";
 function FarmerPage() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -11,7 +13,8 @@ function FarmerPage() {
 
   return (
     <div>
-      <nav className="bg-gray-300 top-0 ">
+   
+      {/* <nav className="bg-gray-300 top-0 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="flex items-center justify-between h-16 ">
             <div className="flex items-center">
@@ -114,7 +117,7 @@ function FarmerPage() {
             </a>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       <div className="flex md:flex-row flex-col justify-center md:gap-4 md:p-4 p-2">
         <div className="w-full lg:w-2/3 md:w-full sm:w-full">
@@ -165,11 +168,12 @@ function FarmerPage() {
           <div className=" flex justify-center m-6 md:p-10 p-0 mt-4  overflow-y-auto max-h-full">
             {/* Content for the right section */}
             <div className="w-full h-full flex items-center justify-center">
-              <img
+              {/* <img
                 src="https://raw.githubusercontent.com/tusharnankani/VocalForLocal/7e186d6c31427b348bc8523c1c51d6088a443633/static/images/img1.svg"
                 alt="Crop Areas India"
                 className="max-h-full max-w-full object-contain"
-              />
+              /> */}
+            <SmallChange/>
             </div>
           </div>
         </div>
