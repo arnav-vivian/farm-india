@@ -9,9 +9,4 @@ router.get("/login", login);
 //verffy
 router.post("/verify", verify);
 
-//Register
-router.get("/register", (req, res) => {
-    res.send("register end!")
-});
-
 export default router;

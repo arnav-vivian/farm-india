@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
-
 const UserSchema = new Schema({
 
     name: {
@@ -16,12 +15,8 @@ const UserSchema = new Schema({
         type: Number,
         required: true
     },
-    phone: {
-        type: String,
-        required: true
-    },
     pincode: {
-        type: String,
+        type: Number,
         required: true
     },
     familySize: {
@@ -34,12 +29,12 @@ const UserSchema = new Schema({
     },
 
     dist: {
-        type: Number,
+        type: String,
         required: true
     },
 
     state: {
-        type: Number,
+        type: String,
         required: true
     },
 

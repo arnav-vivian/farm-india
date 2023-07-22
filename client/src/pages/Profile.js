@@ -2,6 +2,7 @@ import React from 'react';
 import RoundChart from '../components/RoundChart';
 import ResponsiveTable from '../components/ResponsiveTable';
 import WeatherComponent from '../components/WeatherComponent';
+import useFetch from '../hooks/useFetch';
 import {
   MDBCol,
   MDBContainer,
@@ -12,6 +13,8 @@ import {
 } from 'mdb-react-ui-kit';
 
 const ProfilePage = () => {
+  const { data, error, loading } = useFetch("http://localhost:8800/crops/allcrops");
+  console.log(data);
   return (
     <section style={{ backgroundColor: '#eee' }}>
       <h2 className="text-center p-1">

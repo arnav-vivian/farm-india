@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import authRoute from './routes/auth.js';
 import cropsRoute from './Routes/crops.js';
 import usersRoute from './routes/users.js';
+import cors from 'cors';
 const app = express();
 dotenv.config();
 
@@ -21,7 +22,7 @@ const connect = async () => {
 mongoose.connection.on("disconnected", () => {
     console.log("MongoDB disconnected");
 });
-
+app.use(cors());
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
@@ -29,9 +30,9 @@ app.get('/', (req, res) => {
 //middlewares
 app.use(express.json());
 app.use('/auth', authRoute);
-app.use('/users', usersRoute);
+app.use('/user', usersRoute);
 app.use('/crops', cropsRoute);
-const port = 3000;
+const port = 8800;
 
 app.listen(port, () => {
     connect();

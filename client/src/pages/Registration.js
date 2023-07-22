@@ -1,6 +1,7 @@
 // src/App.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import useFetch from '../hooks/useFetch';
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -28,19 +29,10 @@ function Register() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-
-
-        axios.post('https://jsonplaceholder.typicode.com/posts', formData)
-            .then(() => {
-                setIsSubmitting(false);
-                setIsSubmitted(true);
-            })
-            .catch((error) => {
-                setIsSubmitting(false);
-                console.error('Error submitting form:', error);
-            });
     };
 
+    const { data, error, loading } = useFetch("http://localhost:8800/crops/allcrops");
+    console.log(data);
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-3xl font-semibold mb-4">Farmer Registration</h1>

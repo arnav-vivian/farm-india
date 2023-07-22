@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import './ResponsiveTable.css'; // Assuming the CSS file is in the same directory
 import { MdOutlineModeEditOutline, MdDelete } from 'react-icons/md';
-
+import useFetch from '../hooks/useFetch';
 const ResponsiveTable = () => {
   const [data, setData] = useState([]);
   const [inputId, setInputId] = useState('');
   const [inputName, setInputName] = useState('');
   const [selectedRowId, setSelectedRowId] = useState(null);
+
+  const { data1, error, loading } = useFetch("http://localhost:8800/crops/allcrops");
+  console.log(data1);
 
   const addRow = () => {
     if (inputId.trim() !== '' && inputName.trim() !== '') {
@@ -66,7 +69,7 @@ const ResponsiveTable = () => {
   return (
     <div>
       <div className="input-container">
-      <h5 className='text-center'>My Crop Production</h5>
+        <h5 className='text-center'>My Crop Production</h5>
         <input
           type="text"
           value={inputId}
@@ -84,7 +87,7 @@ const ResponsiveTable = () => {
         ) : (
           <button onClick={addRow}>Add Row</button>
         )}
-       
+
       </div>
       <div className="table-container">
         <table className="responsive-table">
@@ -101,8 +104,8 @@ const ResponsiveTable = () => {
                 <td>{row.id}</td>
                 <td>{row.name}</td>
                 <td>
-                  <button onClick={() => editRow(row.id)} className='p-2'><MdOutlineModeEditOutline/></button>
-                  <button onClick={() => deleteRow(row.id)}><MdDelete/></button>
+                  <button onClick={() => editRow(row.id)} className='p-2'><MdOutlineModeEditOutline /></button>
+                  <button onClick={() => deleteRow(row.id)}><MdDelete /></button>
                 </td>
               </tr>
             ))}
