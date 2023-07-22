@@ -31,8 +31,9 @@ app.use(express.json());
 app.use('/auth', authRoute);
 app.use('/users', usersRoute);
 app.use('/crops', cropsRoute);
+const port = 3000;
 
-app.listen(3001, () => {
+app.listen(port, () => {
     connect();
-    console.log('Server started on port 3000...welcome');
+    console.log('Server started on port ${port}...welcome');
 });

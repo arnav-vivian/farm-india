@@ -33,6 +33,7 @@ export const modifyCrop = async (req, res) => {
 
 export const getAllCrop = async (req, res) => {
     try {
+        console.log("get all crops")
         const allCrops = await Crop.find();
         res.status(200).json(allCrops);
     } catch (err) {

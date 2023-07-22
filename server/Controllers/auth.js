@@ -42,6 +42,7 @@ function sendOTP(recipient) {
 }
 
 export const login = (req, res) => {
+    console.log("login")
     try {
         const recipientNumber = req.body.phone;
         sendOTP(recipientNumber);

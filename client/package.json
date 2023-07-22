@@ -11,6 +11,7 @@
     "axios": "^1.4.0",
     "axioss": "^0.0.1-security",
     "bootstrap": "^3.4.1",
+    "cors": "^2.8.5",
     "mdb-react-ui-kit": "^6.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",

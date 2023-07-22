@@ -22,14 +22,13 @@ const GridGallery = () => {
     // Add more data to create additional rows
   ];
   const [selectedButton, setSelectedButton] = useState("Agriculture");
-  const [selectedCard, setSelectedCard] = useState("Agriculture");
 
   const handleButtonClick = (buttonText) => {
     setSelectedButton(buttonText);
   };
   return (
     <div>
-      <div className="flex gap-2 m-4">
+      <div className="flex  gap-2 m-4">
         <button
           className={`px-6 py-4 rounded-lg text-lg focus:outline-none ${selectedButton === "Agriculture"
             ? "bg-amber-500 text-amber-800 font-bold rounded-[32px] text-2xl"
